@@ -16,7 +16,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 public class jB3 extends Connexion  implements ActionListener  {
 	static File file; 
-	static String mf ; 
+	static String mf ;
+	int x;
 	public static void Ouvrir() throws IOException {
 		try{
 			ra=jb.getSelectedIndex();
@@ -65,6 +66,18 @@ public class jB3 extends Connexion  implements ActionListener  {
 
    
 	public void update() throws IOException {
+		if (jb1.getSelectedItem() == "Facture") {
+			x = s ;
+		       System.out.println("Facture N:"+x);
+		}else if (jb1.getSelectedItem() == "Offre") {
+			x=No+1;
+		       System.out.println("Offre N:"+x);
+
+		}else {
+			x=Bl;
+		       System.out.println("Bl N:"+x);
+
+		}
 
 	       File file = new File("C:\\Users\\USER\\Desktop\\amin.xls");
 	       // Read XSL file
@@ -78,7 +91,7 @@ public class jB3 extends Connexion  implements ActionListener  {
 	
 	       HSSFCell cell = sheet.getRow(15).getCell(1);
 	       
-	       cell.setCellValue("Referance:"+s+"/22");
+	       cell.setCellValue("Referance:"+x+"/23");
 	       Date aujourdhui = new Date();
 	       DateFormat shortDateFormat = DateFormat.getDateInstance(
 	    	        DateFormat.SHORT);
@@ -91,6 +104,7 @@ public class jB3 extends Connexion  implements ActionListener  {
 	       HSSFCell cell3 = sheet.getRow(15).getCell(6);
 	       String rb=(String)jb.getSelectedItem();
 	       cell3.setCellValue(rb);
+	       
 	       Ouvrir();
 	       cell5 = sheet.getRow(32).getCell(10).getNumericCellValue();
 	        System.out.println("prix="+cell5);

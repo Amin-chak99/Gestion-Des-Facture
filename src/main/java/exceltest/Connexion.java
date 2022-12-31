@@ -81,6 +81,8 @@ public class Connexion  {
 
     static int ra ;
 	static int s;
+	static int No;
+	static int Bl;
 	static String cf , cf1;
 	static String ab ,aazz;
     static double cell5 ,cell55;
@@ -267,6 +269,30 @@ public static void ajouter(int s) {
 
 	        st.executeUpdate(query);
 	        System.out.println("eleve bien ajouté");
+
+	    }catch(SQLException e){
+	        System.out.println(e.getMessage());
+	    }
+	    
+	    }
+	  public static void AjouterO(int s,String ab,int a ,double cell5){
+	    	try {
+				read();
+			 
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		  try {
+	    	
+	    	String query="INSERT INTO offre(\r\n"
+	    			+ "            \"Id_Off\", \"Date_Off\", \"Clt_Off\", \"Prix_Off\")\r\n"
+	    			+ "    VALUES ( '"+No+"','"+ab+"','"+ra+"','"+cell55+"');\r\n";
+	        cnx1=getInstance(); 
+	        st=cnx.createStatement();
+	        st.executeUpdate(query);
+	        
+	        System.out.println("Offre bien ajouté");
 
 	    }catch(SQLException e){
 	        System.out.println(e.getMessage());

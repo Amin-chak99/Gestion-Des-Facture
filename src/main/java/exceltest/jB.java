@@ -14,9 +14,22 @@ public class jB extends Connexion implements ActionListener {
 if(e.getSource()==jB ) {
 		
 			int a=s++;
+			int c=No++;
 			int b=jb.getSelectedIndex()+1;
+			if (jb1.getSelectedItem() == "Facture") {
 				AjouterP(a,ab, ra ,cell5);
 				ajouter(a);
+
+			}else if (jb1.getSelectedItem() == "Offre") {
+				AjouterO(c,ab, ra ,cell5);
+
+
+			}else {
+				
+			       System.out.println("Bl ");
+
+			}
+			
 
 				table.setModel(model);
 	 			
