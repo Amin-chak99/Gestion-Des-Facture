@@ -69,6 +69,9 @@ public class Connexion  {
 	static Connection cnx3 ; 
 	static Statement st3;
 	static ResultSet rst3 ;
+	static Connection cnx7 ; 
+	static Statement st7;
+	static ResultSet rst7 ;
 	static int c ;
 	static Object valueAt1 ;
 	static JTextField textField;
@@ -97,7 +100,7 @@ public class Connexion  {
            cnx3=getInstance(); 
            st3=cnx3.createStatement();
            st3.executeUpdate(query);
-           System.out.println("eleve bien supprimé");
+           System.out.println("eleve bien supprimï¿½");
             
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -237,19 +240,36 @@ public static void ajouter(int s) {
 	try{
 		String query="INSERT INTO \"Reglement\"(\r\n"
 				+ "            \"Id_Reg\", \"Reg\")\r\n"
-				+ "    VALUES ("+s+", 'Non Reglé');\r\n"
+				+ "    VALUES ("+s+", 'Non Reglï¿½');\r\n"
 				+ "";
          cnx3=getInstance(); 
          st3=cnx3.createStatement();
          st3.executeUpdate(query);
-         System.out.println("ajouté");
+         System.out.println("ajoutï¿½");
           
       }catch(SQLException e){
           System.out.println(e.getMessage());
       }
 	
 }
+public static void op() {
 
+try{
+String query="SELECT  *  FROM offre ;";
+         cnx7=getInstance();
+         st7=cnx7.createStatement();
+rst7=st7.executeQuery(query);
+
+         while (rst7.next()) {
+     
+     No++;
+     }
+         System.out.println(No);
+      }catch(SQLException e){
+          System.out.println(e.getMessage());
+      }
+
+}
 	  public static void AjouterP(int s,String ab,int a ,double cell5){
 	    	try {
 				read();
@@ -268,7 +288,7 @@ public static void ajouter(int s) {
 	       
 
 	        st.executeUpdate(query);
-	        System.out.println("eleve bien ajouté");
+	        System.out.println("eleve bien ajoutï¿½");
 
 	    }catch(SQLException e){
 	        System.out.println(e.getMessage());
@@ -292,7 +312,7 @@ public static void ajouter(int s) {
 	        st=cnx.createStatement();
 	        st.executeUpdate(query);
 	        
-	        System.out.println("Offre bien ajouté");
+	        System.out.println("Offre bien ajoutï¿½");
 
 	    }catch(SQLException e){
 	        System.out.println(e.getMessage());
@@ -318,6 +338,7 @@ public static Connection getInstance(){
 		try {
 			connect = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Connetion effective");
+			op();
 }
 		
 	 catch (Exception e) {
@@ -427,7 +448,7 @@ System.out.println("last day of the "
 public static void initialisation2() {
 	ArrayList<String[]> listEleves2 ;
 	listEleves2= con.getEleves2();
-		 String titles[] = { "Facture N°", "Client","Prix TTC" };
+		 String titles[] = { "Facture Nï¿½", "Client","Prix TTC" };
 	        model2 = new DefaultTableModel();
 	    for(int i=0; i< titles.length;i++) 
 	        model2.addColumn(titles[i]);
@@ -445,7 +466,7 @@ public static void initialisation2() {
 public static void initialisation1() {
 	ArrayList<String[]> listEleves1 ;
 	listEleves1= con.getEleves1();
-		 String titles[] = { "Facture N°", "Date","Prix TTC" };
+		 String titles[] = { "Facture Nï¿½", "Date","Prix TTC" };
 	        model1 = new DefaultTableModel();
 	    for(int i=0; i< titles.length;i++) 
 	        model1.addColumn(titles[i]);
@@ -462,7 +483,7 @@ public static void initialisation() {
 	ArrayList<String[]> listEleves ;
 	
 		listEleves= con.getEleves();
-		 String titles[] = { "Facture N°", "Date", "Client","Prix TTC","Etat" };
+		 String titles[] = { "Facture Nï¿½", "Date", "Client","Prix TTC","Etat" };
 	        model = new DefaultTableModel();
 	    for(int i=0; i< titles.length;i++) 
 	        model.addColumn(titles[i]);
@@ -504,7 +525,7 @@ public static void main(String[] args) throws SQLException {
           pane.setPreferredSize(new Dimension(500, 350));
           Box box1 = Box.createHorizontalBox();
 
-          JFrame f = new JFrame("Socité Maintenace Electro froid");
+          JFrame f = new JFrame("Socitï¿½ Maintenace Electro froid");
           JPanel panel = new JPanel();
           panel.add(pane);
           box1.add(panel);
@@ -525,8 +546,8 @@ public static void main(String[] args) throws SQLException {
     		jb1.addItem("Bon de Livraison");
     		jb2.setPreferredSize(new Dimension(70,20));
     		jb2.addItem("");
-    		jb2.addItem("Reglé");
-    		jb2.addItem("Non Reglé");
+    		jb2.addItem("Reglï¿½");
+    		jb2.addItem("Non Reglï¿½");
 
           JPanel panel1 = new JPanel();
 
